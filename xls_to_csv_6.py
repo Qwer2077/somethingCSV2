@@ -1,3 +1,5 @@
+import multiprocessing
+from multiprocessing import freeze_support
 import pandas as pd
 import tkinter as tk
 import tkinter.filedialog
@@ -10,7 +12,7 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import time
 import threading
-import multiprocessing
+
 
 
 def watchdog_monitor():
@@ -149,8 +151,6 @@ def confirm(filename):
         print(e)
 
 
-
-
 def on_close():
     # custom close options, here's one example:
 
@@ -160,6 +160,8 @@ def on_close():
 
 
 if __name__ == "__main__":
+    freeze_support()
+
     try:
         os.makedirs("tmp/")
     except FileExistsError:
